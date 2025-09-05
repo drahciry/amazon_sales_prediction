@@ -1,4 +1,12 @@
+#================================================================================
+# IMPORTS
+#================================================================================
+
 import pandas as pd
+
+#================================================================================
+# FUNCTIONS
+#================================================================================
 
 def clean_amazon_data(df_raw: pd.DataFrame, top_n_brands: int=25) ->pd.DataFrame:
     """
@@ -9,7 +17,6 @@ def clean_amazon_data(df_raw: pd.DataFrame, top_n_brands: int=25) ->pd.DataFrame
         df_raw (pd.DataFrame): The raw dataset that will be cleaned.
         top_n_brands (int, optional): The quantify of brands that will be
         visible. Defaults to 25.
-
     Returns:
         DataFrame: DataFrame with cleaned dataset.
     """
@@ -35,7 +42,7 @@ def clean_amazon_data(df_raw: pd.DataFrame, top_n_brands: int=25) ->pd.DataFrame
     df_cleaned.drop(columns=['image_url', 'product_url'], inplace=True)
 
     # Captures the 50 largests brands
-    top_brands = df_cleaned['brand'].value_counts().nlargest(25).index
+    top_brands = df_cleaned['brand'].value_counts().nlargest(top_n_brands).index
 
     # Modify the brands that are not in top_brands
     df_cleaned['brand'] = df_cleaned['brand'].where(df_cleaned['brand'].isin(top_brands), 'Other')
