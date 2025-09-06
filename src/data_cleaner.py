@@ -8,7 +8,7 @@ import pandas as pd
 # FUNCTIONS
 #================================================================================
 
-def clean_amazon_data(df_raw: pd.DataFrame, top_n_brands: int=25) ->pd.DataFrame:
+def clean_amazon_data(df_raw: pd.DataFrame, top_n_brands: int=25) -> pd.DataFrame:
     """
     This function clean dataset to improve the data analysis
     and model train. Returns a new DataFrame refactored.
@@ -51,4 +51,4 @@ def clean_amazon_data(df_raw: pd.DataFrame, top_n_brands: int=25) ->pd.DataFrame
     df_cleaned.sort_values('title', inplace=True)
     
     # Return clean dataframe
-    return df_cleaned
+    return df_cleaned 
