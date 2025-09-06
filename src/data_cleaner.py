@@ -49,3 +49,6 @@ def clean_amazon_data(df_raw: pd.DataFrame, top_n_brands: int=25) ->pd.DataFrame
 
     # Sort values by title
     df_cleaned.sort_values('title', inplace=True)
+    
+    # Return clean dataframe
+    return df_cleaned
